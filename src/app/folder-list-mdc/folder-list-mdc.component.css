@@ -1,0 +1,14 @@
+.material-icons {
+  color: #1976d2;
+}
+
+.item-medium {
+  margin: 10px 10px;
+  display: inline-block;
+}
+
+.item-medium .material-icons {
+    font-size: 48px;
+}
+
+

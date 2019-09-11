@@ -1,0 +1,11 @@
+:host {
+  padding-right: 8px;
+}
+
+.example-tree-progress-bar {
+  margin-left: 30px;
+}
+
+.mat-tree-node {
+  overflow: visible;
+}

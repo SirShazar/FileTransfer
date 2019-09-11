@@ -1,0 +1,20 @@
+<mdc-list-group>
+  <mdc-list avatar singleSelection interactive useSelectedClass verticalOrientation>
+    <mdc-list-item *ngFor="let item of getItems()">
+      <div *ngIf="mode === 'folders'; then folderLayout; else fileLayout"></div>
+
+      <ng-template #folderLayout class="folder-layout">
+        <p>
+          <mdc-icon mdcListItemGraphic>{{ item.icon }}</mdc-icon>
+          <mdc-list-item-text>{{ item.name }}</mdc-list-item-text>
+        </p>
+      </ng-template>
+      <ng-template #fileLayout class="file-layout">
+        <span class="item-medium">
+          <mdc-icon mdcListItemGraphic>{{ item.icon }}</mdc-icon>
+          <mdc-list-item-text>{{ item.name }}</mdc-list-item-text>
+        </span>
+      </ng-template>
+    </mdc-list-item>
+  </mdc-list>
+</mdc-list-group>
