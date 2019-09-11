@@ -8,12 +8,19 @@ import { MatListModule } from '@angular/material/list';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdcIconModule, MdcListModule } from '@angular-mdc/web';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSortModule } from '@angular/material/sort';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FtTreeComponent } from './ft-tree/ft-tree.component';
 import { FolderListComponent } from './folder-list/folder-list.component';
 import { FolderListMdcComponent } from './folder-list-mdc/folder-list-mdc.component';
+import { FileTableComponent } from './file-table/file-table.component';
 
 
 @NgModule({
@@ -21,7 +28,8 @@ import { FolderListMdcComponent } from './folder-list-mdc/folder-list-mdc.compon
     AppComponent,
     FtTreeComponent,
     FolderListComponent,
-    FolderListMdcComponent
+    FolderListMdcComponent,
+    FileTableComponent
   ],
   imports: [
     AppRoutingModule,
@@ -34,7 +42,13 @@ import { FolderListMdcComponent } from './folder-list-mdc/folder-list-mdc.compon
     MatProgressBarModule,
     MatTreeModule,
     MdcIconModule,
-    MdcListModule
+    MdcListModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
