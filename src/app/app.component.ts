@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from './services/user.service';
 
 
 
@@ -9,4 +10,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'FileTransfer';
+
+  isAdmin: boolean = false;
+
+  constructor(private _userService: UserService) { 
+    this.isAdmin = this._userService.isAdmin();
+
+
+  }
+
 }

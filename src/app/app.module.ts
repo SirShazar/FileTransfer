@@ -14,6 +14,8 @@ import { MatInputModule } from '@angular/material';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSortModule } from '@angular/material/sort';
+import { HttpClientModule } from '@angular/common/http';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +23,7 @@ import { FtTreeComponent } from './ft-tree/ft-tree.component';
 import { FolderListComponent } from './folder-list/folder-list.component';
 import { FolderListMdcComponent } from './folder-list-mdc/folder-list-mdc.component';
 import { FileTableComponent } from './file-table/file-table.component';
+import { LogComponent } from './log/log.component';
 
 
 @NgModule({
@@ -29,7 +32,8 @@ import { FileTableComponent } from './file-table/file-table.component';
     FtTreeComponent,
     FolderListComponent,
     FolderListMdcComponent,
-    FileTableComponent
+    FileTableComponent,
+    LogComponent
   ],
   imports: [
     AppRoutingModule,
@@ -48,7 +52,9 @@ import { FileTableComponent } from './file-table/file-table.component';
     MatPaginatorModule,
     MatInputModule,
     MatCheckboxModule,
-    MatSortModule
+    MatSortModule,
+    HttpClientModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

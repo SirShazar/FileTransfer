@@ -1,5 +1,5 @@
 <mat-selection-list >
-  <mat-list-option *ngFor="let folder of folders">
+  <mat-list-option *ngFor="let folder of getItems()">
     <mat-icon mat-list-icon>folder</mat-icon>
     <h4 mat-line>{{ folder.name }}</h4>
   </mat-list-option>
