@@ -4,6 +4,17 @@
   height: 100%;
 }
 
+.title {
+  font-size: smaller;
+  margin: 0;
+  padding: 1em 0 1em 2em;
+  color: #777777;
+}
+
+mat-form-field {
+  margin: 0 16px;
+}
+
 .table-container {
   display: flex;
   flex-direction: column;
@@ -12,13 +23,11 @@
 }
 
 table {
-  width: 100%;
   flex: 1;
 }
 
 .mat-form-field {
   font-size: 14px;
-  width: 100%;
 }
 
 .mat-column-icon {

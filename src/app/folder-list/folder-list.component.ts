@@ -1,17 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-export interface Group {
-  name: string;
-  id: number;
-}
-export interface Section {
-  name: string;
-  id: number;
-  email: string;
-  permissions: Group[];
-}
-
-
 
 @Component({
   selector: 'app-folder-list',
@@ -24,38 +12,27 @@ export class FolderListComponent implements OnInit {
 
   ngOnInit() {
   }
+  public getItems(folderName): string[] {
+    const blah: string[] = [];
+    return blah;
+  }
 
-  folders: Section[] = [
-    {
-      name: 'Payload 1',
-      id: 123,
-      email: 'tom@pl1.abc.edu',
-      permissions: null
-    },
-    {
-      name: 'Payload 2',
-      id: 234,
-      email: 'pl2@researchio.io',
-      permissions: [{
-        name: 'PL2 Managers',
-        id: 987
-      },
-      {
-        name: 'PL2 Researchers',
-        id: 986
-      }]
-    },
-    {
-      name: 'Payload 3',
-      id: 345,
-      email: null,
-      permissions: null
-    },
-    {
-      name: 'Payload 4',
-      id: 456,
-      email: null,
-      permissions: null
-    },
-  ];
+  // public getItems(folderName): FolderListItemInterface[] {
+  //   let nodes: FolderListItemInterface[] = [];
+
+  //   nodes = folderName ? this._fileService.getFolderNodesByNodeName(folderName) : this._fileService.getRootFolders();
+
+  //   if (this.mode == 'folder') {
+  //     nodes = nodes.filter(node => node.isFolder && !node.isRoot);
+  //   } else if (this.mode == 'files') {
+  //     nodes = nodes.filter(node => !node.isFolder);
+  //   }
+  //   // else nodes is mixed state of nodes
+
+  //   // Add icons as appropriate
+  //   nodes.forEach(node => node.icon = node.isFolder ? 'folder' : 'file-blah');
+
+  //   return nodes;
+  // }
+
 }

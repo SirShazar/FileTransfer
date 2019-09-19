@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FileService } from '../services/file.service';
+import { NodeInterface } from '../interfaces/node.interface';
 
-interface Group {
-  name: string;
-  id: number;
+interface FolderListItemInterface extends NodeInterface {
+  icon?: string;
 }
 
 
@@ -16,29 +17,33 @@ export class FolderListMdcComponent implements OnInit {
   @Input()
   public mode: string = 'mixed'; // 'folders', 'files', 'mixed'
 
-  constructor() { }
+  constructor(private _fileService: FileService) { }
 
   ngOnInit() {
 
   }
 
 
-  public folders = [
-    { name: 'Photos', icon: 'folder', addDate: 'Jan 9, 2015' },
-    { name: 'Recipes', icon: 'folder', addDate: 'Jan 17, 2015' },
-    { name: 'Work', icon: 'folder', addDate: 'Jan 28, 2015' },
-  ];
 
-  public files=[
-    { name: 'Vacation Itinerary', icon: 'insert_drive_file', addDate: 'Jan 10, 2015' },
-    { name: 'Kitchen Remodel', icon: 'insert_drive_file', addDate: 'Jan 20, 2015' }
-  ];
+  public getItems(folderName): FolderListItemInterface[] {
+    let nodes: FolderListItemInterface[] = [];
 
-  public filesAndFolders = this.folders.concat(this.files);
+    nodes = folderName ? this._fileService.getFolderNodesByNodeName(folderName) : this._fileService.getRootFolders();
 
-  public getItems() {
-    return this.mode == 'folders' ? this.folders :
-                 this.mode == 'files' ? this.files :
-                 this.filesAndFolders;
+    if (this.mode == 'folder') {
+      nodes = nodes.filter(node => node.isFolder && !node.isRoot);
+    } else if (this.mode == 'files') {
+      nodes = nodes.filter(node => !node.isFolder);
+    }
+    // else nodes is mixed state of nodes
+
+    // Add icons as appropriate
+    nodes.forEach(node => node.icon = node.isFolder ? 'folder' : 'file-blah');
+
+    return nodes;
+  }
+
+  public folderClicked(event) {
+    console.log(event);
   }
 }

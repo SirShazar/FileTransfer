@@ -1,9 +1,16 @@
-.material-icons {
-  color: #1976d2;
+
+.list-item-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
 }
 
+.list-item-container .material-icons {
+  margin-right: 8px;
+}
+
+
 .item-medium {
-  margin: 10px 10px;
   display: inline-block;
 }
 

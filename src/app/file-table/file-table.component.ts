@@ -3,23 +3,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
+import { FileService } from '../services/file.service';
+import { NodeInterface } from '../interfaces/node.interface';
 
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  color: string;
-}
-
-/** Constants used to fill up our data base. */
-const COLORS: string[] = [
-  'maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple', 'fuchsia', 'lime', 'teal',
-  'aqua', 'blue', 'navy', 'black', 'gray'
-];
-const NAMES: string[] = [
-  'Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack', 'Charlotte', 'Theodore', 'Isla', 'Oliver',
-  'Isabella', 'Jasper', 'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'
-];
 
 
 @Component({
@@ -28,29 +14,32 @@ const NAMES: string[] = [
   styleUrls: ['./file-table.component.css']
 })
 export class FileTableComponent implements OnInit {
-  displayedColumns: string[] = ['select', 'id', 'name', 'progress', 'color'];
-  dataSource: MatTableDataSource<UserData>;
-  selection: SelectionModel<UserData>;
+  displayedColumns: string[] = ['select', 'icon', 'name', 'size', 'modifiedDate', 'transferStatus', 'transferDate'];
+  dataSource: MatTableDataSource<NodeInterface>;
+  selection: SelectionModel<NodeInterface>;
 
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor() {
-    // Create 100 users
-    const users = Array.from({ length: 100 }, (_, k) => createNewUser(k + 1));
 
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
-
-    const initialSelection = [];
-    const allowMultiSelect = true;
-    this.selection = new SelectionModel<UserData>(allowMultiSelect, initialSelection);
+  constructor(private _fileService: FileService) {
   }
 
   ngOnInit() {
+    // Assign the data to the data source for the table to render
+    const folders = this._fileService.getFolderNodesByNodeName("");
+    if (folders && folders.length > 0) {
+      const files = this._fileService.getFolderNodesByNodeName(folders[0].name);
+      this.dataSource = new MatTableDataSource(files);
+    }
+
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+
+    const initialSelection = [];
+    const allowMultiSelect = true;
+    this.selection = new SelectionModel<NodeInterface>(allowMultiSelect, initialSelection);
   }
 
   applyFilter(filterValue: string) {
@@ -76,23 +65,10 @@ export class FileTableComponent implements OnInit {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: UserData): string {
+  checkboxLabel(row?: NodeInterface): string {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.name}`;
   }
-}
-
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name = NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
-
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
-  };
 }

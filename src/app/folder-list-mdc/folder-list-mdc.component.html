@@ -4,15 +4,14 @@
       <div *ngIf="mode === 'folders'; then folderLayout; else fileLayout"></div>
 
       <ng-template #folderLayout class="folder-layout">
-        <p>
-          <mdc-icon mdcListItemGraphic>{{ item.icon }}</mdc-icon>
-          <mdc-list-item-text>{{ item.name }}</mdc-list-item-text>
-        </p>
+        <div class="list-item-container" (click)="folderClicked($event)">
+          <mat-icon mdcListItemGraphic color="primary">{{ item.icon }}</mat-icon> <mdc-list-item-text>{{ item.name }}</mdc-list-item-text>
+        </div>
       </ng-template>
 
       <ng-template #fileLayout class="file-layout">
         <span class="item-medium">
-          <mdc-icon mdcListItemGraphic>{{ item.icon }}</mdc-icon>
+          <mat-icon mdcListItemGraphic color="primary">{{ item.icon }}</mat-icon>
           <mdc-list-item-text>{{ item.name }}</mdc-list-item-text>
         </span>
       </ng-template>
