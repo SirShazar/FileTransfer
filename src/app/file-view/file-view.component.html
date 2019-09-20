@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+  <div>
+    This is the toolbar...
+    <button routerLink="/log">Log View</button>
+  </div>
+</mat-toolbar>
+
+<div class="content" role="main">
+  <div class="folder-area" role="navigation">
+    <app-folder-list-mdc [mode]="'folders'"></app-folder-list-mdc>
+  </div>
+
+  <div class="right-pane">
+    <div class="file-area" role="region">
+      <app-file-table></app-file-table>
+    </div>
+
+    <div class="log-area" role="region">
+      <div class="title">Activity Log</div>
+      <app-log mode="lite"></app-log>
+    </div>
+  </div>
+</div>

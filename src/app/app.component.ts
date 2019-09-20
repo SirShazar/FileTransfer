@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { UserService } from './services/user.service';
-
-
 
 @Component({
   selector: '.app-root',
@@ -11,12 +8,5 @@ import { UserService } from './services/user.service';
 export class AppComponent {
   title = 'FileTransfer';
 
-  isAdmin: boolean = false;
-
-  constructor(private _userService: UserService) { 
-    this.isAdmin = this._userService.isAdmin();
-
-
-  }
-
+  constructor() { }
 }
