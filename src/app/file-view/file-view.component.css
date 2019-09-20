@@ -1,0 +1,69 @@
+:host {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.toolbar {
+  height: 60px;
+  padding: 4px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  background-color: #1976d2;
+  color: white;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.folder-area {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  max-width: 300px;
+  overflow: auto;
+  border-right: 1px solid #ccc;
+  padding: 10px;
+}
+
+.right-pane {
+  flex: 1;
+  /* background-color: lightblue; */
+  display: flex;
+  flex-direction: column;
+}
+
+.file-area {
+  flex: 1;
+}
+
+.log-area {
+  height: 300px;
+  box-sizing: border-box;
+  border-top: 1px solid lightgray;
+  margin-top: 24px;
+  overflow: auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: smaller;
+  margin: 0;
+  padding: 1em 0 1em 2em;
+  color: #777777;
+}
+
+.app-log {
+  flex: 1;
+}

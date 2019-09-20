@@ -24,6 +24,9 @@ import { FolderListComponent } from './folder-list/folder-list.component';
 import { FolderListMdcComponent } from './folder-list-mdc/folder-list-mdc.component';
 import { FileTableComponent } from './file-table/file-table.component';
 import { LogComponent } from './log/log.component';
+import { routingModules } from './app-routing.module';
+import { LogViewComponent } from './log-view/log-view.component';
+import { FileViewComponent } from './file-view/file-view.component';
 
 
 @NgModule({
@@ -33,7 +36,10 @@ import { LogComponent } from './log/log.component';
     FolderListComponent,
     FolderListMdcComponent,
     FileTableComponent,
-    LogComponent
+    LogComponent,
+    routingModules,
+    LogViewComponent,
+    FileViewComponent
   ],
   imports: [
     AppRoutingModule,
